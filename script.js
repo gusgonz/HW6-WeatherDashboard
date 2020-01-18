@@ -2,7 +2,17 @@
 
 // Algolia third-party api
 var placesAutocomplete = places({
-	appId: 'YHSNLEDJ0A',
-	apiKey: '3edc49d1e984d739c114787534c196c9',
+	appId: 'plHJ3V77N7R0',
+	apiKey: '15c839632d2df1c8823fe9d3cd8988f5',
 	container: document.querySelector('#address-input')
+});
+
+placesAutocomplete.on('change', (e) => {
+	// saving the input object in a variable
+	var inputObject = e.suggestion;
+	console.log(inputObject);
+
+	// grabbing city name and country code from the input
+	var cityName = inputObject.name;
+	console.log(cityName);
 });
