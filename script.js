@@ -32,5 +32,8 @@ placesAutocomplete.on('change', (e) => {
 		var windSpeed = response.wind.speed;
 
 		console.log(temp, humidity, windSpeed);
+
+		$('#temp').text(temp + ' ' + String.fromCharCode(176) + 'F');
+		$('#humidity').text(humidity + '%');
 	});
 });
