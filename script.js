@@ -97,7 +97,7 @@ function fivedayForecast(cityName) {
 	});
 }
 
-placesAutocomplete.on('change', (e) => {
+placesAutocomplete.on('change', function displayWeather(e) {
 	// saving the input object in a variable
 	var inputObject = e.suggestion;
 	console.log(inputObject);
@@ -106,7 +106,7 @@ placesAutocomplete.on('change', (e) => {
 	var cityName = inputObject.name;
 	// console.log(cityName);
 
-	$('.results').fadeIn();
+	$('.results').fadeIn(1000);
 
 	$('.name').text(cityName);
 
