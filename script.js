@@ -7,6 +7,11 @@ var placesAutocomplete = places({
 	container: document.querySelector('#address-input')
 });
 
+function uvIndex(lat, long) {
+	console.log(lat);
+	console.log(long);
+}
+
 function currentWeather(cityName) {
 	var queryURL =
 		'http://api.openweathermap.org/data/2.5/weather?q=' +
@@ -17,11 +22,16 @@ function currentWeather(cityName) {
 		url: queryURL,
 		method: 'GET'
 	}).then(function(response) {
-		// console.log(response);
+		console.log(response);
 
 		var temp = response.main.temp;
 		var humidity = response.main.humidity;
 		var windSpeed = response.wind.speed;
+
+		var lat = response.coord.lat;
+		var long = response.coord.lon;
+
+		uvIndex(lat, long);
 
 		// console.log(temp, humidity, windSpeed);
 
@@ -41,7 +51,7 @@ function fivedayForecast(cityName) {
 		url: queryURL2,
 		method: 'GET'
 	}).then(function(response) {
-		console.log(response);
+		// console.log(response);
 
 		for (var i = 0; i < 5; i++) {
 			var index = i * 8;
@@ -83,5 +93,6 @@ placesAutocomplete.on('change', (e) => {
 	console.log(cityName);
 
 	currentWeather(cityName);
+
 	fivedayForecast(cityName);
 });
