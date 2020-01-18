@@ -1,4 +1,4 @@
-.container-fluid {
+.header {
 	padding: 0;
 	text-align: center;
 }
@@ -15,4 +15,5 @@ header {
 }
 
 .search-container {
+	padding: 0;
 }
