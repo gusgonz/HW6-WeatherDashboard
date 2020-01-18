@@ -68,3 +68,9 @@ p {
 .results {
 	display: none;
 }
+
+.recent-searches {
+	max-width: 600px;
+	margin-left: auto;
+	margin-right: auto;
+}
