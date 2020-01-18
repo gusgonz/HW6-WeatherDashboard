@@ -7,15 +7,7 @@ var placesAutocomplete = places({
 	container: document.querySelector('#address-input')
 });
 
-placesAutocomplete.on('change', (e) => {
-	// saving the input object in a variable
-	var inputObject = e.suggestion;
-	console.log(inputObject);
-
-	// grabbing city name and country code from the input
-	var cityName = inputObject.name;
-	console.log(cityName);
-
+function currentWeather(cityName) {
 	var queryURL =
 		'http://api.openweathermap.org/data/2.5/weather?q=' +
 		cityName +
@@ -25,16 +17,40 @@ placesAutocomplete.on('change', (e) => {
 		url: queryURL,
 		method: 'GET'
 	}).then(function(response) {
-		console.log(response);
+		// console.log(response);
 
 		var temp = response.main.temp;
 		var humidity = response.main.humidity;
 		var windSpeed = response.wind.speed;
 
-		console.log(temp, humidity, windSpeed);
+		// console.log(temp, humidity, windSpeed);
 
 		$('#temp').text(temp + ' ' + String.fromCharCode(176) + 'F');
 		$('#humidity').text(humidity + '%');
 		$('#wind-speed').text(windSpeed + ' mph');
+	});
+}
+
+placesAutocomplete.on('change', (e) => {
+	// saving the input object in a variable
+	var inputObject = e.suggestion;
+	console.log(inputObject);
+
+	// grabbing city name and country code from the input
+	var cityName = inputObject.name;
+	console.log(cityName);
+
+	currentWeather(cityName);
+
+	var queryURL2 =
+		'http://api.openweathermap.org/data/2.5/forecast?q=' +
+		cityName +
+		'&APPID=7ed6e592c87c5c5e7c239aee3ee410d9&units=imperial';
+
+	$.ajax({
+		url: queryURL2,
+		method: 'GET'
+	}).then(function(response) {
+		console.log(response);
 	});
 });
