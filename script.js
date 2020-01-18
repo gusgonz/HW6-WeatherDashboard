@@ -64,6 +64,9 @@ function fivedayForecast(cityName) {
 			var year = date.substring(0, 4);
 			console.log(year);
 
+			// date with regular us format
+			date = month + '/' + day + '/' + year;
+
 			var dateClass = '.day' + i + '-date';
 			$(dateClass).text(date);
 		}
