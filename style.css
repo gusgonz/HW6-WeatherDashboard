@@ -30,3 +30,23 @@ header {
 h3 {
 	text-align: center;
 }
+
+.current-container,
+.fiveday-container {
+	background-color: whitesmoke;
+	margin: 0px 15px 15px 0px;
+}
+
+.current,
+.fiveday {
+	padding: 15px;
+}
+
+.card {
+	height: 160px;
+	margin-left: 15px;
+}
+
+.last {
+	margin-right: 15px;
+}
