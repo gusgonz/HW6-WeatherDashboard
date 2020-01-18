@@ -45,8 +45,27 @@ function fivedayForecast(cityName) {
 
 		for (var i = 0; i < 5; i++) {
 			var index = i * 8;
+
+			// temp
 			var temp = response.list[index].main.temp;
-			console.log(temp);
+			var tempClass = '#day' + i + '-temp';
+			$(tempClass).text(temp + ' ' + String.fromCharCode(176) + 'F');
+
+			// humidity
+			var humidity = response.list[index].main.humidity;
+			var hClass = '#day' + i + '-humidity';
+			$(hClass).text(humidity + '%');
+
+			// date
+			var date = response.list[index]['dt_txt'];
+			console.log(date);
+			var month = date.substring(5, 7);
+			var day = date.substring(8, 10);
+			var year = date.substring(0, 4);
+			console.log(year);
+
+			var dateClass = '.day' + i + '-date';
+			$(dateClass).text(date);
 		}
 	});
 }
