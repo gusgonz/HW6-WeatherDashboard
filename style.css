@@ -1,0 +1,9 @@
+.container-fluid {
+	padding: 0;
+	text-align: center;
+}
+
+header {
+	padding: 15px;
+	color: whitesmoke;
+}
