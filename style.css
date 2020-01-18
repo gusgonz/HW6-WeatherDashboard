@@ -21,3 +21,11 @@ header {
 .search-container {
 	padding: 0;
 }
+
+.content {
+	color: #343a40;
+}
+
+h3 {
+	text-align: center;
+}
