@@ -64,3 +64,7 @@ h3 {
 p {
 	margin-bottom: 2px;
 }
+
+.results {
+	display: none;
+}
