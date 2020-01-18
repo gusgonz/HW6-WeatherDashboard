@@ -15,4 +15,22 @@ placesAutocomplete.on('change', (e) => {
 	// grabbing city name and country code from the input
 	var cityName = inputObject.name;
 	console.log(cityName);
+
+	var queryURL =
+		'http://api.openweathermap.org/data/2.5/weather?q=' +
+		cityName +
+		'&APPID=7ed6e592c87c5c5e7c239aee3ee410d9&units=imperial';
+
+	$.ajax({
+		url: queryURL,
+		method: 'GET'
+	}).then(function(response) {
+		console.log(response);
+
+		var temp = response.main.temp;
+		var humidity = response.main.humidity;
+		var windSpeed = response.wind.speed;
+
+		console.log(temp, humidity, windSpeed);
+	});
 });
