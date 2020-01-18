@@ -31,17 +31,7 @@ function currentWeather(cityName) {
 	});
 }
 
-placesAutocomplete.on('change', (e) => {
-	// saving the input object in a variable
-	var inputObject = e.suggestion;
-	console.log(inputObject);
-
-	// grabbing city name and country code from the input
-	var cityName = inputObject.name;
-	console.log(cityName);
-
-	currentWeather(cityName);
-
+function fivedayForecast(cityName) {
 	var queryURL2 =
 		'http://api.openweathermap.org/data/2.5/forecast?q=' +
 		cityName +
@@ -52,5 +42,24 @@ placesAutocomplete.on('change', (e) => {
 		method: 'GET'
 	}).then(function(response) {
 		console.log(response);
+
+		for (var i = 0; i < 5; i++) {
+			var index = i * 8;
+			var temp = response.list[index].main.temp;
+			console.log(temp);
+		}
 	});
+}
+
+placesAutocomplete.on('change', (e) => {
+	// saving the input object in a variable
+	var inputObject = e.suggestion;
+	console.log(inputObject);
+
+	// grabbing city name and country code from the input
+	var cityName = inputObject.name;
+	console.log(cityName);
+
+	currentWeather(cityName);
+	fivedayForecast(cityName);
 });
