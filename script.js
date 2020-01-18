@@ -19,7 +19,7 @@ function uvIndex(lat, long) {
 		url: queryURL,
 		method: 'GET'
 	}).then(function(response) {
-		console.log(response);
+		// console.log(response);
 		var uvi = response.value;
 
 		$('#uv-index').text(uvi);
@@ -36,7 +36,7 @@ function currentWeather(cityName) {
 		url: queryURL,
 		method: 'GET'
 	}).then(function(response) {
-		console.log(response);
+		// console.log(response);
 
 		var temp = response.main.temp;
 		var humidity = response.main.humidity;
@@ -82,11 +82,11 @@ function fivedayForecast(cityName) {
 
 			// date
 			var date = response.list[index]['dt_txt'];
-			console.log(date);
+			// console.log(date);
 			var month = date.substring(5, 7);
 			var day = date.substring(8, 10);
 			var year = date.substring(0, 4);
-			console.log(year);
+			// console.log(year);
 
 			// date with regular us format
 			date = month + '/' + day + '/' + year;
@@ -104,7 +104,11 @@ placesAutocomplete.on('change', (e) => {
 
 	// grabbing city name and country code from the input
 	var cityName = inputObject.name;
-	console.log(cityName);
+	// console.log(cityName);
+
+	$('.results').fadeIn();
+
+	$('.name').text(cityName);
 
 	currentWeather(cityName);
 
