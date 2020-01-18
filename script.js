@@ -65,10 +65,16 @@ function fivedayForecast(cityName) {
 		url: queryURL2,
 		method: 'GET'
 	}).then(function(response) {
-		// console.log(response);
+		console.log(response);
 
 		for (var i = 0; i < 5; i++) {
 			var index = i * 8;
+
+			// icon
+			var iconID = response.list[index].weather[0].icon;
+			var iconSrc = 'https://openweathermap.org/img/wn/' + iconID + '@2x.png';
+			var iconClass = '#day' + i + '-icon';
+			$(iconClass).attr('src', iconSrc);
 
 			// temp
 			var temp = response.list[index].main.temp;
