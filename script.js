@@ -8,8 +8,19 @@ var placesAutocomplete = places({
 });
 
 function uvIndex(lat, long) {
-	console.log(lat);
-	console.log(long);
+	var queryURL =
+		'http://api.openweathermap.org/data/2.5/uvi?lat=' +
+		lat +
+		'&lon=' +
+		long +
+		'&APPID=7ed6e592c87c5c5e7c239aee3ee410d9&units=imperial';
+
+	$.ajax({
+		url: queryURL,
+		method: 'GET'
+	}).then(function(response) {
+		console.log(response);
+	});
 }
 
 function currentWeather(cityName) {
