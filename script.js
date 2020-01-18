@@ -20,6 +20,9 @@ function uvIndex(lat, long) {
 		method: 'GET'
 	}).then(function(response) {
 		console.log(response);
+		var uvi = response.value;
+
+		$('#uv-index').text(uvi);
 	});
 }
 
