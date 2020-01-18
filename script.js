@@ -35,5 +35,6 @@ placesAutocomplete.on('change', (e) => {
 
 		$('#temp').text(temp + ' ' + String.fromCharCode(176) + 'F');
 		$('#humidity').text(humidity + '%');
+		$('#wind-speed').text(windSpeed + ' mph');
 	});
 });
