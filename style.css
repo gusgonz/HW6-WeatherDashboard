@@ -7,3 +7,12 @@ header {
 	padding: 15px;
 	color: whitesmoke;
 }
+
+#searchbar {
+	height: 60px;
+	margin: 15px auto;
+	max-width: 600px;
+}
+
+.search-container {
+}
