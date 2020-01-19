@@ -155,3 +155,17 @@ placesAutocomplete.on('change', function displayWeather(e) {
 });
 
 renderRecentSearches();
+
+$('button').click(function() {
+	var cityName = $(this).text();
+	console.log(cityName);
+	addToLocalStorage(cityName);
+
+	$('.results').fadeIn(1000);
+
+	$('.name').text(cityName);
+
+	currentWeather(cityName);
+
+	fivedayForecast(cityName);
+});
