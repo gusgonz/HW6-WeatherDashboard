@@ -30,6 +30,10 @@ function addToLocalStorage(cityName) {
 	// limiting to 10 most recent searches
 	console.log(recentSearches);
 
+	if (recentSearches.includes(cityName)) {
+		return;
+	}
+
 	if (recentSearches.length === 10) {
 		recentSearches.shift();
 	}
@@ -156,7 +160,7 @@ placesAutocomplete.on('change', function displayWeather(e) {
 
 renderRecentSearches();
 
-$('button').click(function() {
+$(document).on('click', 'button', function() {
 	var cityName = $(this).text();
 	console.log(cityName);
 	addToLocalStorage(cityName);
