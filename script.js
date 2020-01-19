@@ -13,9 +13,6 @@ function renderRecentSearches() {
 	$('#recent-searches').empty();
 	var local = localStorage.getItem('recent');
 
-	// console.log(recentSearches);
-	console.log(typeof local);
-
 	if (local) {
 		local = local.split(',');
 		recentSearches = local;
@@ -28,7 +25,6 @@ function renderRecentSearches() {
 
 function addToLocalStorage(cityName) {
 	// limiting to 10 most recent searches
-	console.log(recentSearches);
 
 	if (recentSearches.includes(cityName)) {
 		return;
@@ -55,7 +51,6 @@ function uvIndex(lat, long) {
 		url: queryURL,
 		method: 'GET'
 	}).then(function(response) {
-		// console.log(response);
 		var uvi = response.value;
 
 		$('#uv-index').text(uvi);
@@ -72,8 +67,6 @@ function currentWeather(cityName) {
 		url: queryURL,
 		method: 'GET'
 	}).then(function(response) {
-		// console.log(response);
-
 		var temp = response.main.temp;
 		var humidity = response.main.humidity;
 		var windSpeed = response.wind.speed;
@@ -82,8 +75,6 @@ function currentWeather(cityName) {
 		var long = response.coord.lon;
 
 		uvIndex(lat, long);
-
-		// console.log(temp, humidity, windSpeed);
 
 		$('#temp').text(temp + ' ' + String.fromCharCode(176) + 'F');
 		$('#humidity').text(humidity + '%');
@@ -101,8 +92,6 @@ function fivedayForecast(cityName) {
 		url: queryURL2,
 		method: 'GET'
 	}).then(function(response) {
-		console.log(response);
-
 		for (var i = 0; i < 5; i++) {
 			var index = i * 8;
 
@@ -124,11 +113,9 @@ function fivedayForecast(cityName) {
 
 			// date
 			var date = response.list[index]['dt_txt'];
-			// console.log(date);
 			var month = date.substring(5, 7);
 			var day = date.substring(8, 10);
 			var year = date.substring(0, 4);
-			// console.log(year);
 
 			// date with regular us format
 			date = month + '/' + day + '/' + year;
@@ -142,11 +129,10 @@ function fivedayForecast(cityName) {
 placesAutocomplete.on('change', function displayWeather(e) {
 	// saving the input object in a variable
 	var inputObject = e.suggestion;
-	console.log(inputObject);
 
 	// grabbing city name and country code from the input
 	var cityName = inputObject.name;
-	// console.log(cityName);
+
 	addToLocalStorage(cityName);
 
 	$('.results').fadeIn(1000);
@@ -162,7 +148,7 @@ renderRecentSearches();
 
 $(document).on('click', 'button', function() {
 	var cityName = $(this).text();
-	console.log(cityName);
+
 	addToLocalStorage(cityName);
 
 	$('.results').fadeIn(1000);
