@@ -1,5 +1,7 @@
 // open weather apikey 7ed6e592c87c5c5e7c239aee3ee410d9
 
+var recentSearches = [];
+
 // Algolia third-party api for the searchbar
 var placesAutocomplete = places({
 	appId: 'plHJ3V77N7R0',
@@ -7,21 +9,34 @@ var placesAutocomplete = places({
 	container: document.querySelector('#address-input')
 });
 
-var recentSearches = [];
-
 function renderRecentSearches() {
 	$('#recent-searches').empty();
-	recentSearches = localStorage.getItem('recent');
+	var local = localStorage.getItem('recent');
 
-	if (!recentSearches) {
-		for (var i = 0; i < recentSearches.length; i++) {
-			var newBtn = $('<button type="button" class="btn-block btn-light">' + recentSearches[i] + '</button>');
+	// console.log(recentSearches);
+	console.log(typeof local);
+
+	if (local) {
+		local = local.split(',');
+		for (var i = 0; i < local.length; i++) {
+			var newBtn = $('<button type="button" class="btn-block btn-light">' + local[i] + '</button>');
 			$('#recent-searches').prepend(newBtn);
 		}
 	}
 }
 
-function addToLocalStorage(cityName) {}
+function addToLocalStorage(cityName) {
+	// limiting to 10 most recent searches
+	console.log(recentSearches);
+
+	if (recentSearches.length === 10) {
+		recentSearches.shift();
+	}
+	recentSearches.push(cityName);
+
+	localStorage.setItem('recent', recentSearches);
+	renderRecentSearches();
+}
 
 function uvIndex(lat, long) {
 	var queryURL =
@@ -127,6 +142,7 @@ placesAutocomplete.on('change', function displayWeather(e) {
 	// grabbing city name and country code from the input
 	var cityName = inputObject.name;
 	// console.log(cityName);
+	addToLocalStorage(cityName);
 
 	$('.results').fadeIn(1000);
 
@@ -136,3 +152,5 @@ placesAutocomplete.on('change', function displayWeather(e) {
 
 	fivedayForecast(cityName);
 });
+
+renderRecentSearches();
