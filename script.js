@@ -18,6 +18,7 @@ function renderRecentSearches() {
 
 	if (local) {
 		local = local.split(',');
+		recentSearches = local;
 		for (var i = 0; i < local.length; i++) {
 			var newBtn = $('<button type="button" class="btn-block btn-light">' + local[i] + '</button>');
 			$('#recent-searches').prepend(newBtn);
