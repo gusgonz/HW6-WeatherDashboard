@@ -7,6 +7,22 @@ var placesAutocomplete = places({
 	container: document.querySelector('#address-input')
 });
 
+var recentSearches = [];
+
+function renderRecentSearches() {
+	$('#recent-searches').empty();
+	recentSearches = localStorage.getItem('recent');
+
+	if (!recentSearches) {
+		for (var i = 0; i < recentSearches.length; i++) {
+			var newBtn = $('<button type="button" class="btn-block btn-light">' + recentSearches[i] + '</button>');
+			$('#recent-searches').prepend(newBtn);
+		}
+	}
+}
+
+function addToLocalStorage(cityName) {}
+
 function uvIndex(lat, long) {
 	var queryURL =
 		'http://api.openweathermap.org/data/2.5/uvi?lat=' +
