@@ -41,7 +41,7 @@ function addToLocalStorage(cityName) {
 
 function uvIndex(lat, long) {
 	var queryURL =
-		'http://api.openweathermap.org/data/2.5/uvi?lat=' +
+		'https://api.openweathermap.org/data/2.5/uvi?lat=' +
 		lat +
 		'&lon=' +
 		long +
@@ -59,7 +59,7 @@ function uvIndex(lat, long) {
 
 function currentWeather(cityName) {
 	var queryURL =
-		'http://api.openweathermap.org/data/2.5/weather?q=' +
+		'https://api.openweathermap.org/data/2.5/weather?q=' +
 		cityName +
 		'&APPID=7ed6e592c87c5c5e7c239aee3ee410d9&units=imperial';
 
@@ -84,7 +84,7 @@ function currentWeather(cityName) {
 
 function fivedayForecast(cityName) {
 	var queryURL2 =
-		'http://api.openweathermap.org/data/2.5/forecast?q=' +
+		'https://api.openweathermap.org/data/2.5/forecast?q=' +
 		cityName +
 		'&APPID=7ed6e592c87c5c5e7c239aee3ee410d9&units=imperial';
 
