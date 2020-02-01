@@ -1,6 +1,8 @@
 # HW6-WeatherDashboard
 A weather dashboard application with search functionality to find current weather conditions and the future weather outlook for multiple cities.
 
+Deployed site: https://gusgonz.github.io/HW6-WeatherDashboard/
+
 ## Installation
 
 Just download and run.
